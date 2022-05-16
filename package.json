@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
@@ -49,5 +50,17 @@
   },
   "devDependencies": {
     "husky": "^7.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!src/hooks",
+      "src/**/*.js",
+      "!src/**/taskListData.js",
+      "!src/**/*.test.js",
+      "!src/index.js",
+      "!src/reportWebVitals.js",
+      "!src/setupTests.js",
+      "!src/react-app-env.d.js"
+    ]
   }
 }
