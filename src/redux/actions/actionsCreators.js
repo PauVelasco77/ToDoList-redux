@@ -9,3 +9,8 @@ export const isCompletedAction = (task) => ({
   type: actionsTypes.isCompleted,
   task,
 });
+
+export const newTaskAction = (task) => ({
+  type: actionsTypes.newTask,
+  task,
+});
