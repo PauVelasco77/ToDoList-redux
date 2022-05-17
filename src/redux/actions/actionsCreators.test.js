@@ -2,7 +2,11 @@ import {
   generateRandomTask,
   generateRandomTasks,
 } from "../../mocks/tasksFactory";
-import { isCompletedAction, loadTasksAction } from "./actionsCreators";
+import {
+  isCompletedAction,
+  loadTasksAction,
+  newTaskAction,
+} from "./actionsCreators";
 
 describe("Given a loadTasks action", () => {
   describe("When it receives a list of tasks", () => {
@@ -32,6 +36,23 @@ describe("Given a isCompleted action", () => {
       };
 
       const action = isCompletedAction(task);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a createTask action", () => {
+  describe("When it receives a new task", () => {
+    test("Then it should return an action with type new-task and the new task", () => {
+      const task = generateRandomTask();
+
+      const expectedAction = {
+        type: "new-task",
+        task,
+      };
+
+      const action = newTaskAction(task);
 
       expect(action).toEqual(expectedAction);
     });

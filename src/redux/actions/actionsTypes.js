@@ -1,7 +1,7 @@
 const actionsTypes = {
   loadTasks: "load-tasks",
   isCompleted: "is-completed",
-  createTask: "create-task",
+  newTask: "new-task",
 };
 
 export default actionsTypes;
