@@ -15,6 +15,9 @@ const taskListDataReducer = (tasks = [], action = {}) => {
     case actionsTypes.newTask:
       newTasksList = [...tasks, action.task];
       break;
+    case actionsTypes.deleteTask:
+      newTasksList = tasks.filter((task) => task.id !== action.task.id);
+      break;
     default:
       newTasksList = [...tasks];
       break;
