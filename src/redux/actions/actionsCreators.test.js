@@ -3,6 +3,7 @@ import {
   generateRandomTasks,
 } from "../../mocks/tasksFactory";
 import {
+  deleteTaskAction,
   isCompletedAction,
   loadTasksAction,
   newTaskAction,
@@ -53,6 +54,23 @@ describe("Given a createTask action", () => {
       };
 
       const action = newTaskAction(task);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a deleteTask action", () => {
+  describe("When it receives a task", () => {
+    test("Then it should return an action sith types delete-task and the new task", () => {
+      const task = generateRandomTask();
+
+      const expectedAction = {
+        type: "delete-task",
+        task,
+      };
+
+      const action = deleteTaskAction(task);
 
       expect(action).toEqual(expectedAction);
     });

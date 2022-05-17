@@ -70,4 +70,25 @@ describe("Given a taskListDataReducer reducer", () => {
       expect(newTasks).toHaveLength(expectedLength);
     });
   });
+
+  describe("When it receives an action with type delelteTask and the new task", () => {
+    test("Then it should return the list of the task without the task in the action", () => {
+      const taskList = generateRandomTasks(4);
+      const deletedTask = taskList[1];
+      const expectedTasks = taskList.filter(
+        (task) => task.id !== deletedTask.id
+      );
+      const expectedLength = taskList.length - 1;
+
+      const action = {
+        type: "delete-task",
+        task: deletedTask,
+      };
+
+      const newTasks = taskListDataReducer(taskList, action);
+
+      expect(newTasks).toHaveLength(expectedLength);
+      expect(newTasks).toEqual(expectedTasks);
+    });
+  });
 });
