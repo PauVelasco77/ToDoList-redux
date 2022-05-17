@@ -1,4 +1,7 @@
-import { generateRandomTasks } from "../../mocks/tasksFactory";
+import {
+  generateRandomTask,
+  generateRandomTasks,
+} from "../../mocks/tasksFactory";
 import taskListDataReducer from "./taskListDataReducer";
 
 describe("Given a taskListDataReducer reducer", () => {
@@ -47,6 +50,24 @@ describe("Given a taskListDataReducer reducer", () => {
       const newTasks = taskListDataReducer(taskList, action);
 
       expect(newTasks).toContainEqual(updatedTask);
+    });
+  });
+
+  describe("When it receives an action with type newTask and the new task", () => {
+    test("Then it should return the list of tasks with the new task inside", () => {
+      const taskList = generateRandomTasks(5);
+      const newTask = generateRandomTask();
+      const expectedLength = taskList.length + 1;
+
+      const action = {
+        type: "new-task",
+        task: newTask,
+      };
+
+      const newTasks = taskListDataReducer(taskList, action);
+
+      expect(newTasks).toContainEqual(newTask);
+      expect(newTasks).toHaveLength(expectedLength);
     });
   });
 });
