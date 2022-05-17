@@ -2,7 +2,7 @@ import { Factory } from "fishery";
 import faker from "@faker-js/faker";
 
 const taskFactory = Factory.define(() => ({
-  name: faker.lorem.words(3),
+  name: faker.commerce.product(),
   isCompleted: faker.datatype.boolean(),
   date: faker.date.soon(),
   username: faker.name.findName(),
