@@ -7,7 +7,11 @@ const taskListDataReducer = (tasks = [], action = {}) => {
     case actionsTypes.loadTasks:
       newTasksList = [...action.taskList];
       break;
-
+    case actionsTypes.isCompleted:
+      const task = tasks.find((task) => task.id === action.task.id);
+      task.isCompleted = !task.isCompleted;
+      newTasksList = [...tasks];
+      break;
     default:
       newTasksList = [...tasks];
       break;
