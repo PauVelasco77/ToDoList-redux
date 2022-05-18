@@ -1,10 +1,13 @@
 import { Avatar, Card, CardHeader, IconButton, Switch } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { isCompletedAction } from "../../redux/actions/actionsCreators";
+import {
+  deleteTaskAction,
+  isCompletedAction,
+} from "../../redux/actions/actionsCreators";
 import Check from "../Check/Check";
+import Trash from "../Trash/Trash";
 
 const CardContainer = styled.div`
   list-style: none;
@@ -29,6 +32,10 @@ const Task = ({ task }) => {
     dispatch(isCompletedAction(task));
   };
 
+  const handleDelete = (task) => {
+    dispatch(deleteTaskAction(task));
+  };
+
   return (
     <CardContainer>
       <Card variant="outlined" sx={{ maxWidth: 400, backgroundColor: "" }}>
@@ -40,6 +47,7 @@ const Task = ({ task }) => {
           }
           action={
             <IconButton aria-label="settings">
+              <Trash actionOnClick={() => handleDelete(task)} />
               <Switch
                 inputProps={{ "aria-label": "controlled" }}
                 onChange={() => handleChange(task)}
