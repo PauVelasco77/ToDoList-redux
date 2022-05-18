@@ -61,4 +61,15 @@ describe("Given a Task component", () => {
       expect(mockDispatch).toHaveBeenCalled();
     });
   });
+
+  describe("When the user click on the trash icon", () => {
+    test("Then it should call the dispatch", () => {
+      render(<Task task={task} />);
+
+      const findTrash = screen.getByTestId("DeleteForeverIcon");
+      userEvent.click(findTrash);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
 });
