@@ -1,13 +1,10 @@
 import { Avatar, Card, CardHeader, IconButton, Switch } from "@mui/material";
-import { deepOrange, purple, red } from "@mui/material/colors";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
   deleteTaskAction,
   isCompletedAction,
 } from "../../redux/actions/actionsCreators";
-import randomColorsMui, { colorsMui } from "../../styles/colorsMui";
 import Check from "../Check/Check";
 import Trash from "../Trash/Trash";
 
@@ -45,7 +42,7 @@ const Task = ({ task }) => {
           avatar={
             <Avatar
               style={{
-                backgroundColor: task.color[500],
+                backgroundColor: task.color,
               }}
               aria-label="recipe"
             >

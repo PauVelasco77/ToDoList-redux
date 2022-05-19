@@ -66,9 +66,9 @@ export const colorsMui2 = [
 
 export const randomColorsMui = (actualColors) => {
   const color = colorsMui2[Math.round(Math.random() * (colorsMui2.length - 1))];
-  if (actualColors.some((actualColor) => actualColor === color)) {
+  if (actualColors.some((actualColor) => actualColor === color[500])) {
     return randomColorsMui(actualColors);
   }
-  actualColors.push(color);
-  return color;
+  actualColors.push(color[500]);
+  return color[500];
 };
