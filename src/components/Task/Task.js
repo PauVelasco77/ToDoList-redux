@@ -8,7 +8,7 @@ import {
 import Check from "../Check/Check";
 import Trash from "../Trash/Trash";
 
-const CardContainer = styled.div`
+const CardContainer = styled.li`
   list-style: none;
   padding: 10px;
 `;
