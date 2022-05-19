@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import Task from "./Task";
 import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
+import store from "../../redux/store/index";
 
 const task = {
   name: "Wash the dishes",
@@ -24,7 +26,11 @@ describe("Given a Task component", () => {
       const expectedDate = task.date;
       const expectedFirstLetter = task.username[0];
 
-      render(<Task task={task} />);
+      render(
+        <Provider store={store}>
+          <Task task={task} />
+        </Provider>
+      );
 
       const findName = screen.getByText(expectedName);
       const findDate = screen.getByText(expectedDate);

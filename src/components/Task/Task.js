@@ -1,5 +1,4 @@
 import { Avatar, Card, CardHeader, IconButton, Switch } from "@mui/material";
-import { red } from "@mui/material/colors";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
@@ -41,7 +40,12 @@ const Task = ({ task }) => {
       <Card variant="outlined" sx={{ maxWidth: 400, backgroundColor: "" }}>
         <CardHeaderMui
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            <Avatar
+              style={{
+                backgroundColor: task.color,
+              }}
+              aria-label="recipe"
+            >
               {firstLetter}
             </Avatar>
           }
