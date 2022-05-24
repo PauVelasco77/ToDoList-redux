@@ -19,9 +19,3 @@ export const deleteTaskAction = (task) => ({
   type: actionsTypes.deleteTask,
   task,
 });
-
-export const reorderTasksAction = (startIndex, endIndex) => ({
-  type: actionsTypes.reorderTasks,
-  startIndex,
-  endIndex,
-});
