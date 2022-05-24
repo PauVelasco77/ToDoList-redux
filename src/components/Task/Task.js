@@ -23,7 +23,7 @@ const CardHeaderMui = styled(CardHeader)`
   }
 `;
 
-const Task = ({ task }) => {
+const Task = ({ task, draggableProvided }) => {
   const firstLetter = task.username[0].toUpperCase();
   const dispatch = useDispatch();
 
@@ -36,7 +36,11 @@ const Task = ({ task }) => {
   };
 
   return (
-    <CardContainer>
+    <CardContainer
+      {...draggableProvided.draggableProps}
+      ref={draggableProvided.innerRef}
+      {...draggableProvided.dragHandleProps}
+    >
       <Card variant="outlined" sx={{ maxWidth: 400, backgroundColor: "" }}>
         <CardHeaderMui
           avatar={
