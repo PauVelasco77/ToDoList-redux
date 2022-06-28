@@ -18,6 +18,11 @@ const taskListDataReducer = (tasks = [], action = {}) => {
     case actionsTypes.deleteTask:
       newTasksList = tasks.filter((task) => task.id !== action.task.id);
       break;
+    case actionsTypes.reorderTasks:
+      newTasksList = [...tasks];
+      const [removed] = newTasksList.splice(action.startIndex, 1);
+      newTasksList.splice(action.endIndex, 0, removed);
+      break;
     default:
       newTasksList = [...tasks];
       break;
