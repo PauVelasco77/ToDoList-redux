@@ -1,9 +1,17 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import Task from "./Task";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import store from "../../redux/store/index";
-
+import {
+  mockGetComputedStyle,
+  mockDndSpacing,
+  makeDnd,
+  DND_DIRECTION_UP,
+  DND_DIRECTION_DOWN,
+  DND_DRAGGABLE_DATA_ATTR,
+} from "react-beautiful-dnd-test-utils";
 const task = {
   name: "Wash the dishes",
   isCompleted: false,
@@ -14,23 +22,52 @@ const task = {
 
 const mockDispatch = jest.fn();
 
+// jest.mock("react-beautiful-dnd", () => ({
+//   Droppable: ({ children }) =>
+//     children(
+//       {
+//         draggableProps: {
+//           style: {},
+//         },
+//         innerRef: jest.fn(),
+//       },
+//       {}
+//     ),
+//   Draggable: ({ children }) =>
+//     children(
+//       {
+//         draggableProps: {
+//           style: {},
+//         },
+//         innerRef: jest.fn(),
+//       },
+//       {}
+//     ),
+//   DragDropContext: ({ children }) => children,
+// }));
+
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useDispatch: () => mockDispatch,
 }));
 
 describe("Given a Task component", () => {
+  beforeEach(() => {
+    mockGetComputedStyle();
+  });
   describe("When it's rendered with a Task", () => {
-    test("Then it should show the name, the date and the name's first letter", () => {
+    test.only("Then it should show the name, the date and the name's first letter", () => {
       const expectedName = task.name;
       const expectedDate = task.date;
       const expectedFirstLetter = task.username[0];
 
-      render(
+      const renderapp = ()=>{
+        const { container } = render(
         <Provider store={store}>
           <Task task={task} />
         </Provider>
-      );
+      mockDndSpacing(container)
+      );}
 
       const findName = screen.getByText(expectedName);
       const findDate = screen.getByText(expectedDate);
