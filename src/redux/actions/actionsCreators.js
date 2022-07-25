@@ -25,3 +25,8 @@ export const reorderTasksAction = (startIndex, endIndex) => ({
   startIndex,
   endIndex,
 });
+
+export const createTaskAction = (task) => ({
+  type: actionsTypes.createTask,
+  task,
+});
