@@ -5,11 +5,11 @@ import styled from "styled-components";
 
 const FormContainer = styled.form`
   display: flex;
-  align-items: center;
+  width: 100%;
+  margin: auto;
+  flex-wrap: nowrap;
   justify-content: space-between;
-  gap: 10px;
-  margin: 10px;
-  width: 100vw;
+  padding: 10px;
 
   & div {
     display: flex;
@@ -37,12 +37,13 @@ const TaskForm = () => {
   return (
     <>
       <FormContainer onSubmit={submitForm}>
-        <div>
+        <div className="fields-container">
           <TextField
             id="taskName"
             label="Task Name"
             value={formData.taskName}
             onChange={changeData}
+            style={{ width: 270 }}
           />
           <TextField
             id="username"
