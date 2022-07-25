@@ -6,7 +6,7 @@ const taskListData = [
   {
     name: "Wash the dishes",
     isCompleted: false,
-    date: "September 14, 2016",
+    date: "Mon Jul 25 2022",
     username: "Leo Messi",
     color: randomColorsMui(colors),
     id: 1,
@@ -14,7 +14,7 @@ const taskListData = [
   {
     name: "Biscuits",
     isCompleted: false,
-    date: "September 14, 2016",
+    date: "Wed Jul 27 2022",
     username: "Cristiano Ronaldo",
     color: randomColorsMui(colors),
     id: 2,
@@ -22,7 +22,7 @@ const taskListData = [
   {
     name: "Bread",
     isCompleted: false,
-    date: "September 14, 2016",
+    date: "Tue Jul 26 2022",
     username: "Shevchenko",
     color: randomColorsMui(colors),
     id: 3,
@@ -30,7 +30,7 @@ const taskListData = [
   {
     name: "Cheddar cheese",
     isCompleted: false,
-    date: "September 14, 2016",
+    date: "Thu Jul 26 2022",
     username: "Andrea Orlandi",
     color: randomColorsMui(colors),
     id: 4,
@@ -38,7 +38,7 @@ const taskListData = [
   {
     name: "Milk",
     isCompleted: false,
-    date: "September 14, 2016",
+    date: "Fri Jul 30 2022",
     username: "Jack Grealish",
     color: randomColorsMui(colors),
     id: 5,

@@ -46,7 +46,7 @@ const TaskForm = () => {
     const task = {
       name: formData.taskName,
       isCompleted: false,
-      date: "September 14, 2016",
+      date: new Date().toDateString(),
       username: formData.username,
       color: randomColorsMui(colors),
       id: taskList.length + 1,
