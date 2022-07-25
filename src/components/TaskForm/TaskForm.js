@@ -13,6 +13,7 @@ const FormContainer = styled.form`
   margin: auto;
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   width: 400px;
   @media (max-width: 480px) {
