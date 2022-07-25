@@ -51,23 +51,21 @@ jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
 }));
 
+const renderTask = () =>
+  render(
+    <Provider store={store}>
+      <Task task={task} draggableProvided={<></>} />
+    </Provider>
+  );
+
 describe("Given a Task component", () => {
-  beforeEach(() => {
-    mockGetComputedStyle();
-  });
   describe("When it's rendered with a Task", () => {
-    test.only("Then it should show the name, the date and the name's first letter", () => {
+    test("Then it should show the name, the date and the name's first letter", () => {
       const expectedName = task.name;
       const expectedDate = task.date;
       const expectedFirstLetter = task.username[0];
 
-      const renderapp = ()=>{
-        const { container } = render(
-        <Provider store={store}>
-          <Task task={task} />
-        </Provider>
-      mockDndSpacing(container)
-      );}
+      renderTask();
 
       const findName = screen.getByText(expectedName);
       const findDate = screen.getByText(expectedDate);
@@ -84,7 +82,7 @@ describe("Given a Task component", () => {
       const expectedName = task.name;
       task.isCompleted = true;
 
-      render(<Task task={task} />);
+      renderTask();
 
       const findName = screen.getByText(expectedName);
 
@@ -94,8 +92,7 @@ describe("Given a Task component", () => {
 
   describe("When the user click on the toggle button", () => {
     test("Then it should call the dispatch", () => {
-      render(<Task task={task} />);
-
+      renderTask();
       const findToggleButton = screen.getByRole("checkbox", {
         name: "controlled",
       });
@@ -107,7 +104,7 @@ describe("Given a Task component", () => {
 
   describe("When the user click on the trash icon", () => {
     test("Then it should call the dispatch", () => {
-      render(<Task task={task} />);
+      renderTask();
 
       const findTrash = screen.getByTestId("DeleteForeverIcon");
       userEvent.click(findTrash);
