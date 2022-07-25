@@ -4,14 +4,7 @@ import Task from "./Task";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import store from "../../redux/store/index";
-import {
-  mockGetComputedStyle,
-  mockDndSpacing,
-  makeDnd,
-  DND_DIRECTION_UP,
-  DND_DIRECTION_DOWN,
-  DND_DRAGGABLE_DATA_ATTR,
-} from "react-beautiful-dnd-test-utils";
+
 const task = {
   name: "Wash the dishes",
   isCompleted: false,
@@ -21,30 +14,6 @@ const task = {
 };
 
 const mockDispatch = jest.fn();
-
-// jest.mock("react-beautiful-dnd", () => ({
-//   Droppable: ({ children }) =>
-//     children(
-//       {
-//         draggableProps: {
-//           style: {},
-//         },
-//         innerRef: jest.fn(),
-//       },
-//       {}
-//     ),
-//   Draggable: ({ children }) =>
-//     children(
-//       {
-//         draggableProps: {
-//           style: {},
-//         },
-//         innerRef: jest.fn(),
-//       },
-//       {}
-//     ),
-//   DragDropContext: ({ children }) => children,
-// }));
 
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
