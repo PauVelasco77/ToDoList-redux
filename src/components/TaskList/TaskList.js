@@ -12,6 +12,7 @@ import styled from "styled-components";
 const Listul = styled.ul`
   height: 100%;
   width: 100%;
+  padding: 0;
 `;
 
 const TaskList = () => {
