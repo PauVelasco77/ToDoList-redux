@@ -2,6 +2,10 @@ import { Fab, TextField } from "@mui/material";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { createTaskAction } from "../../redux/actions/actionsCreators";
+import { randomColorsMui } from "../../styles/colorsMui";
+import { colors } from "../../data/taskListData";
 
 const FormContainer = styled.form`
   display: flex;
@@ -9,7 +13,12 @@ const FormContainer = styled.form`
   margin: auto;
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
+  width: 400px;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 
   & div {
     display: flex;
@@ -19,12 +28,14 @@ const FormContainer = styled.form`
 `;
 
 const TaskForm = () => {
+  const dispatch = useDispatch();
+  const taskList = useSelector((state) => state.taskList);
   const blankFields = {
     taskName: "",
     username: "",
   };
   const [formData, setFormData] = useState(blankFields);
-  const isInvalid = formData.taskName === "" || formData.username === "";
+  const isInvalid = formData.name === "" || formData.username === "";
 
   const changeData = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -32,6 +43,15 @@ const TaskForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+    const task = {
+      name: formData.taskName,
+      isCompleted: false,
+      date: "September 14, 2016",
+      username: formData.username,
+      color: randomColorsMui(colors),
+      id: taskList.length + 1,
+    };
+    dispatch(createTaskAction(task));
   };
 
   return (

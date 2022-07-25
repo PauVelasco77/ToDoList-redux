@@ -23,6 +23,9 @@ const taskListDataReducer = (tasks = [], action = {}) => {
       const [removed] = newTasksList.splice(action.startIndex, 1);
       newTasksList.splice(action.endIndex, 0, removed);
       break;
+    case actionsTypes.createTask:
+      newTasksList = [...tasks, action.task];
+      break;
     default:
       newTasksList = [...tasks];
       break;

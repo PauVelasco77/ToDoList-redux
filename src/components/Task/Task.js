@@ -11,6 +11,10 @@ import Trash from "../Trash/Trash";
 const CardContainer = styled.div`
   list-style: none;
   padding: 10px;
+  width: 400px;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const CardHeaderMui = styled(CardHeader)`

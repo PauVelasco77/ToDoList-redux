@@ -1,6 +1,6 @@
 import { randomColorsMui } from "../styles/colorsMui";
 
-const colors = [];
+export const colors = [];
 
 const taskListData = [
   {
